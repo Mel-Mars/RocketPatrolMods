@@ -36,7 +36,7 @@ class Play extends Phaser.Scene {
         this.ship01.update();  // update spaceships (x3)
         this.ship02.update();
         this.ship03.update();
-        checkCollision(rocket, ship) {
+        function checkCollision(rocket, ship); {
             // simple AABB checking
             if (rocket.x < ship.x + ship.width && rocket.x + rocket.width > ship.x && rocket.y < ship.y + ship.height && rocket.height + rocket.y > ship. y) {
                     return true;
@@ -45,13 +45,14 @@ class Play extends Phaser.Scene {
             }
         }
         // check collisions
-        if(this.checkCollision(this.p1Rocket, this.ship03)) {
+        if(checkCollision(this.p1Rocket, this.ship03)) {
             console.log('kaboom ship 03');
         }
-        if (this.checkCollision(this.p1Rocket, this.ship02)) {
+        if(checkCollision(this.p1Rocket, this.ship02)) {
             console.log('kaboom ship 02');
         }
-        if (this.checkCollision(this.p1Rocket, this.ship01)) {
+        if(checkCollision(this.p1Rocket, this.ship01)) {
             console.log('kaboom ship 01');
         }  
     }
+}
