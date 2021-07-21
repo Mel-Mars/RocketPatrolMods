@@ -27,6 +27,7 @@ class Play extends Phaser.Scene {
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     }
     update() {
-        this.starfiel.tilePositionX -= 4;
+        this.starfield.tilePositionX -= 4;
+        this.p1Rocket.update();
     }
 }
