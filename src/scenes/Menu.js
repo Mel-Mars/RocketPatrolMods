@@ -29,8 +29,8 @@ class Menu extends Phaser.Scene {
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     }
 
-    update() {}
-        if (_Phaser,Input,Keyboard,JustDown,keyLEFT); {
+    update() {
+        if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             // easy mode
             game.settings = { spaceshipSpeed: 3, gameTimer: 60000
             }
@@ -44,3 +44,5 @@ class Menu extends Phaser.Scene {
         this.sound.play('sfx_select');
         this.scene.start('playScene');
         }
+    }
+}

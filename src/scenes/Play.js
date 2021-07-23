@@ -1,5 +1,3 @@
-const { Phaser } = require("../../lib/phaser");
-
 class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
