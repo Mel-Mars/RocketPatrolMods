@@ -8,7 +8,7 @@ class Play extends Phaser.Scene {
         this.load.image('mouse', './assets/mouse.png');
         this.load.image('bedroom', './assets/bedroom.png');
         // load spritesheet
-        this.load.spritesheet('squeak', './assets/squeak.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.spritesheet('squeak', './assets/squeak.png', {frameWidth: 70, frameHeight: 25, startFrame: 0, endFrame: 9});
     }
 
     create() {
