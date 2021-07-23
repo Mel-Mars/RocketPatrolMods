@@ -6,14 +6,14 @@ class Play extends Phaser.Scene {
         // load images/tile sprites
         this.load.image('puppy', './assets/puppy.png');
         this.load.image('mouse', './assets/mouse.png');
-        this.load.image('starfield', './assets/starfield.png');
+        this.load.image('bedroom', './assets/bedroom.png');
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
     }
 
     create() {
         // place the tile sprite
-        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0,0);
+        this.bedroom = this.add.tileSprite(0, 0, 640, 480, 'bedroom').setOrigin(0,0);
         // green UI background
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2,  0x00FF00).setOrigin(0, 0);
         // white borders
@@ -76,7 +76,7 @@ class Play extends Phaser.Scene {
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.scene.start("menuScene");
         }
-        this.starfield.tilePositionX -= 4; // update tile sprite
+        this.bedroom.tilePositionX -= 4; // update tile sprite
         
         if(!this.gameOver) {
             this.p1Puppy.update(); // update p1
