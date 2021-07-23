@@ -5,9 +5,9 @@ class Menu extends Phaser.Scene {
 
     preload() {
         // load audio
-        this.load.audio('sfx_select', './assets/blip_select12.wav');
-        this.load.audio('sfx_squeak', './assets/squeak38.wav');
-        this.load.audio('sfx_puppy', './assets/puppy_shot.wav');
+        this.load.audio('sfx_select', './assets/blip_select12.wav'); // from https://freesound.org/people/Andromadax24/sounds/186719/
+        this.load.audio('sfx_squeak', './assets/squeak38.wav'); // from https://freesound.org/people/AntumDeluge/sounds/188043/
+        this.load.audio('sfx_puppy', './assets/puppy_shot.wav'); // from https://freesound.org/people/noctaro/sounds/242413/
     }
     
     create() {
