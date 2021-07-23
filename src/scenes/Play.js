@@ -34,10 +34,10 @@ class Play extends Phaser.Scene {
 
         // display score
         let scoreConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'Century Gothic',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            backgroundColor: '#C88CFA',
+            color: '#6F0584',
             align: 'right',
             padding: {
                 top: 5,
@@ -118,6 +118,8 @@ class Play extends Phaser.Scene {
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         this.sound.play('sfx_squeak');
-        console.log(this.p1Score)   
+        // adds to timer for every hit
+        this.game.settings.Fixe += 2000;
+        console.log(this.game.settings.gameTimer)
     }
 }  
