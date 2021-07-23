@@ -37,7 +37,7 @@ class Play extends Phaser.Scene {
             key: 'explode', frames: this.anims.generateFrameNumbers('explosion', {start: 0, end: 9, first: 0}), frameRate: 30
         });
         // intialize score
-        this.op1Score = 0;
+        this.p1Score = 0;
 
         // display score
         let scoreConfig = {
@@ -54,6 +54,8 @@ class Play extends Phaser.Scene {
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
         
+        console.log(this.scoreLeft)
+
         // GAME OVER flag
         this.gameOver = false;
 
@@ -122,5 +124,6 @@ class Play extends Phaser.Scene {
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         this.sound.play('sfx_explosion');
+        console.log(this.p1Score)   
     }
-}
+}  
