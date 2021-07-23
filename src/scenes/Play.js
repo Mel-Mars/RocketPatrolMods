@@ -78,8 +78,8 @@ class Play extends Phaser.Scene {
             this.ship03.update();
         }
         
-        // check collisions
-        if(this.checkCollision(this.p1Puppy, this.ship03)) {
+         // check collisions
+         if(this.checkCollision(this.p1Puppy, this.ship03)) {
             this.p1Puppy.reset();
             this.shipSqueak(this.ship03);
         }
@@ -91,11 +91,12 @@ class Play extends Phaser.Scene {
             this.p1Puppy.reset();
             this.shipSqueak(this.ship01);
         }  
-    }
+    }  
+
 
     checkCollision(puppy, ship) {
         // simple AABB checking
-        if (puppy.x < ship.x + ship.width && puppy.x + puppy.width > ship.x && puppy.y < ship.y + ship.height && puppy.height + Puppy.y > ship. y) {
+        if (puppy.x < ship.x + ship.width && puppy.x + puppy.width > ship.x && puppy.y < ship.y + ship.height && puppy.height + puppy.y > ship. y) {
                 return true;
         } else {
             return false;
