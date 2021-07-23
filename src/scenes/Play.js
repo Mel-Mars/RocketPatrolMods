@@ -8,19 +8,12 @@ class Play extends Phaser.Scene {
         this.load.image('mouse', './assets/mouse.png');
         this.load.image('bedroom', './assets/bedroom.png');
         // load spritesheet
-        this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.spritesheet('squeak', './assets/squeak.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
     }
 
     create() {
         // place the tile sprite
         this.bedroom = this.add.tileSprite(0, 0, 640, 480, 'bedroom').setOrigin(0,0);
-        // green UI background
-        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2,  0x00FF00).setOrigin(0, 0);
-        // white borders
-        this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
         // add puppy (p1)
         this.p1Puppy = new Puppy(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'puppy').setOrigin(0.5, 0);
         // add mouses (x3)
@@ -34,7 +27,7 @@ class Play extends Phaser.Scene {
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         // animation config
         this.anims.create({
-            key: 'explode', frames: this.anims.generateFrameNumbers('explosion', {start: 0, end: 9, first: 0}), frameRate: 30
+            key: 'squeak', frames: this.anims.generateFrameNumbers('squeak', {start: 0, end: 9, first: 0}), frameRate: 30
         });
         // intialize score
         this.p1Score = 0;
@@ -88,15 +81,15 @@ class Play extends Phaser.Scene {
         // check collisions
         if(this.checkCollision(this.p1Puppy, this.ship03)) {
             this.p1Puppy.reset();
-            this.shipExplode(this.ship03);
+            this.shipSqueak(this.ship03);
         }
         if(this.checkCollision(this.p1Puppy, this.ship02)) {
             this.p1Puppy.reset();
-            this.shipExplode(this.ship02);
+            this.shipSqueak(this.ship02);
         }
         if(this.checkCollision(this.p1Puppy, this.ship01)) {
             this.p1Puppy.reset();
-            this.shipExplode(this.ship01);
+            this.shipSqueak(this.ship01);
         }  
     }
 
@@ -109,21 +102,21 @@ class Play extends Phaser.Scene {
         }
     }
 
-    shipExplode(ship) {
+    shipSqueak(ship) {
         // temporarily hide ship
         ship.alpha = 0;
-        // create explosion sprite at ship's position
-        let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0,0);
-        boom.anims.play('explode'); // play explode animation
+        // create squeak sprite at ship's position
+        let boom = this.add.sprite(ship.x, ship.y, 'squeak').setOrigin(0,0);
+        boom.anims.play('squeak'); // play squeak animation
         boom.on('animationcomplete', () => { // callback after animation completes
             ship.reset(); // reset ship position
             ship.alpha = 1; ; // make ship visible again
-            boom.destroy(); // remove explosion sprite
+            boom.destroy(); // remove squeak sprite
         });
         // score add and repaint
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
-        this.sound.play('sfx_explosion');
+        this.sound.play('sfx_squeak');
         console.log(this.p1Score)   
     }
 }  
