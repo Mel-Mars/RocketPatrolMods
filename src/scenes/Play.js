@@ -12,6 +12,7 @@ class Play extends Phaser.Scene {
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
     }
+
     create() {
         // place the tile sprite
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0,0);
@@ -41,12 +42,19 @@ class Play extends Phaser.Scene {
         this.op1Score = 0;
         // display score
         let scoreConfig = {
-            fontFamily: 'Courier', fontSize: '28px', backgroundColor: 'F3B141', color: '#843605', align: 'right', fixedWidth: 100, padding {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
                 top: 5,
                 bottom: 5,
-            }  
+            },
+            fixedWidth: 100
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
+        
         // GAME OVER flag
         this.gameOver = false;
 
@@ -68,12 +76,14 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
         this.starfield.tilePositionX -= 4; // update tile sprite
+        
         if(!this.gameOver) {
             this.p1Rocket.update(); // update p1
             this.ship01.update();  // update spaceships (x3)
             this.ship02.update();
             this.ship03.update();
         }
+        
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
             this.p1Rocket.reset();
