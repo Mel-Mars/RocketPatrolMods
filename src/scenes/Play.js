@@ -7,6 +7,7 @@ class Play extends Phaser.Scene {
         this.load.image('puppy', './assets/puppy.png');
         this.load.image('mouse', './assets/mouse.png');
         this.load.image('bedroom', './assets/bedroom.png');
+        this.load.image('bears', './assets/bears.png');
         // load spritesheet
         this.load.spritesheet('squeak', './assets/squeak.png', {frameWidth: 70, frameHeight: 25, startFrame: 0, endFrame: 9});
     }
@@ -14,6 +15,8 @@ class Play extends Phaser.Scene {
     create() {
         // place the tile sprite
         this.bedroom = this.add.tileSprite(0, 0, 640, 480, 'bedroom').setOrigin(0,0);
+         // green UI background
+        this.bears = this.add.tileSprite(0, borderUISize + borderPadding, game.config.width, borderUISize * 1.25, 'bears').setOrigin(0, 0);
         // add puppy (p1)
         this.p1Puppy = new Puppy(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'puppy').setOrigin(0.5, 0);
         // add mouses (x3)
@@ -118,8 +121,5 @@ class Play extends Phaser.Scene {
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         this.sound.play('sfx_squeak');
-        // adds to timer for every hit
-        this.game.settings.Fixe += 2000;
-        console.log(this.game.settings.gameTimer)
     }
 }  
