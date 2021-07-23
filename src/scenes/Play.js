@@ -4,7 +4,7 @@ class Play extends Phaser.Scene {
     }
     preload() {
         // load images/tile sprites
-        this.load.image('rocket', './assets/rocket.png');
+        this.load.image('puppy', './assets/puppy.png');
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
         // load spritesheet
@@ -21,8 +21,8 @@ class Play extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
         this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
-        // add rocket (p1)
-        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
+        // add puppy (p1)
+        this.p1Puppy = new Puppy(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'puppy').setOrigin(0.5, 0);
         // add spaceships (x3)
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0);
@@ -79,30 +79,30 @@ class Play extends Phaser.Scene {
         this.starfield.tilePositionX -= 4; // update tile sprite
         
         if(!this.gameOver) {
-            this.p1Rocket.update(); // update p1
+            this.p1Puppy.update(); // update p1
             this.ship01.update();  // update spaceships (x3)
             this.ship02.update();
             this.ship03.update();
         }
         
         // check collisions
-        if(this.checkCollision(this.p1Rocket, this.ship03)) {
-            this.p1Rocket.reset();
+        if(this.checkCollision(this.p1Puppy, this.ship03)) {
+            this.p1Puppy.reset();
             this.shipExplode(this.ship03);
         }
-        if(this.checkCollision(this.p1Rocket, this.ship02)) {
-            this.p1Rocket.reset();
+        if(this.checkCollision(this.p1Puppy, this.ship02)) {
+            this.p1Puppy.reset();
             this.shipExplode(this.ship02);
         }
-        if(this.checkCollision(this.p1Rocket, this.ship01)) {
-            this.p1Rocket.reset();
+        if(this.checkCollision(this.p1Puppy, this.ship01)) {
+            this.p1Puppy.reset();
             this.shipExplode(this.ship01);
         }  
     }
 
-    checkCollision(rocket, ship) {
+    checkCollision(puppy, ship) {
         // simple AABB checking
-        if (rocket.x < ship.x + ship.width && rocket.x + rocket.width > ship.x && rocket.y < ship.y + ship.height && rocket.height + rocket.y > ship. y) {
+        if (puppy.x < ship.x + ship.width && puppy.x + puppy.width > ship.x && puppy.y < ship.y + ship.height && puppy.height + Puppy.y > ship. y) {
                 return true;
         } else {
             return false;
