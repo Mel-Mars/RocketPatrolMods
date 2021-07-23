@@ -38,6 +38,7 @@ class Play extends Phaser.Scene {
         });
         // intialize score
         this.op1Score = 0;
+
         // display score
         let scoreConfig = {
             fontFamily: 'Courier',
