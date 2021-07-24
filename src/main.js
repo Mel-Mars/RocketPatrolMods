@@ -17,4 +17,4 @@ let keyF, keyR, keyLEFT, keyRIGHT;
 // Date: 7/23/21
 // Time To Complete: About 12 hours
 // Points Breakdown:
-// Redesign the game's artwork, UI, and sound to change its theme/aesthetic (to something other than sci-fi) (60)
+// Redesign the game's artwork, UI, and sound to change its theme/aesthetic (to something other than sci-fi)(60)
